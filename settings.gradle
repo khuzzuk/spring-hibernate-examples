@@ -1,3 +1,4 @@
 rootProject.name = 'spring-hibernate-examples'
 include 'jpa-examples'
+include 'spring-data'
 

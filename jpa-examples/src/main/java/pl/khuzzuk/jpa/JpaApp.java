@@ -8,6 +8,7 @@ public class JpaApp {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.scan("pl.khuzzuk.jpa");
+        context.scan("pl.khuzzuk.jpa.dao");
         context.refresh();
 
         work(context);
