@@ -1,6 +1,7 @@
 package pl.khuzzuk.springdata.db.relation;
 
-import lombok.Data;
+import java.util.List;
+import java.util.SortedSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,9 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
-import java.util.List;
-import java.util.Set;
+
+import lombok.Data;
 
 @Data
 @Table(schema = "relation")
@@ -27,11 +29,13 @@ public class Person {
             schema = "relation",
             joinColumns = @JoinColumn(name = "person_id"),
             inverseJoinColumns = @JoinColumn(name = "addresses_id"))
+    @OrderBy("street DESC")
     private List<Address> addresses;
     @ManyToMany
     @JoinTable(name = "person_projects",
             schema = "project",
             joinColumns = @JoinColumn(name = "person_id"),
             inverseJoinColumns = @JoinColumn(name = "project_id"))
-    private Set<Project> projects;
+    @OrderBy("name")
+    private SortedSet<Project> projects;
 }

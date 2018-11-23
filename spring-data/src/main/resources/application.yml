@@ -1,8 +1,11 @@
 spring:
   datasource:
-    url: jdbc:h2:~/test
-    driver-class-name: org.h2.Driver
-    username: sa
+#    url: jdbc:h2:~/test
+    url: jdbc:postgresql://localhost:5432/test
+    driver-class-name: org.postgresql.Driver
+#    username: sa
+    username: test
+    password: test
   jpa:
     hibernate:
       ddl-auto: validate
