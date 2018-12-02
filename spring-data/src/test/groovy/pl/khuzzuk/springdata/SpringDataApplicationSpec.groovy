@@ -94,10 +94,10 @@ class SpringDataApplicationSpec extends Specification {
         def tagsAntijoin = entityManager.createNativeQuery("""
                   SELECT b.title
                   FROM bibliography.book b
-                  WHERE NOT EXISTS(SELECT 1 FROM bibliography.book_tags inner_tag 
-                                   WHERE inner_tag.tags IN ('recent', 'fantasy')
-                                    AND NOT inner_tag.tags IN (SELECT ii_tag.tags FROM bibliography.book_tags ii_tag
-                                                               WHERE ii_tag.book_id = b.id))
+                  WHERE NOT EXISTS(SELECT 1 FROM bibliography.book_tags tags 
+                                   WHERE tags.tags IN ('recent', 'fantasy')
+                                    AND NOT tags.tags IN (SELECT inner_tags.tags FROM bibliography.book_tags inner_tags
+                                                               WHERE inner_tags.book_id = b.id))
             """).getResultList()
 
 
